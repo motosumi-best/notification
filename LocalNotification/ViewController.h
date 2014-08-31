@@ -14,5 +14,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *label;
 
 - (void)updateLabel: (NSString*)labelTitel;
+- (void) clearNotification;
 
 @end

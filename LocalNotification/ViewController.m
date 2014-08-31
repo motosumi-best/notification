@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) UILocalNotification *localNotif;
+
 @end
 
 @implementation ViewController
@@ -35,44 +37,55 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 // 通知イベントが発生するようスケジューリングします。
 - (IBAction)pressSendButton
 {
     //UILocalNotificationクラスのインスタンスを作成します。
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    if (localNotif == nil)
+    _localNotif = [[UILocalNotification alloc] init];
+    if (_localNotif == nil)
         return;
     
     //通知を受け取る時刻を指定します。
     //ここでは、現在の時間から１０秒後を指定しています。
     
-    localNotif.fireDate = self.timer.date;
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    _localNotif.fireDate = self.timer.date;
+    _localNotif.timeZone = [NSTimeZone defaultTimeZone];
     
     //通知メッセージの本文を指定します。
-    localNotif.alertBody = [NSString stringWithFormat:@"通知を受信しました。"];
+    _localNotif.alertBody = [NSString stringWithFormat:@"通知を受信しました。"];
     
     //通知メッセージアラートのボタンに表示される文字を指定します。
-    localNotif.alertAction = @"Open";
+    _localNotif.alertAction = @"Open";
     
     //通知されたときの音を指定します。
-    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    _localNotif.soundName = UILocalNotificationDefaultSoundName;
     
     //通知されたときのアイコンバッジの右肩に表示する数字を指定します。
-    localNotif.applicationIconBadgeNumber = 1;
+    _localNotif.applicationIconBadgeNumber += 1;
     
     //通知を受け取るときに送付される NSDictionary を作成します。
     NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"通知を受信しました。" forKey:@"EventKey"];
-    localNotif.userInfo = infoDict;
+    _localNotif.userInfo = infoDict;
     
     // 作成した通知イベント情報をアプリケーションに登録します。
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    [[UIApplication sharedApplication] scheduleLocalNotification:_localNotif];
+    
+    // ラベル変更
+    _label.text = @"タイマー予約開始";
 }
 
 // メイン画面にあるラベルの文字を変更する。
 - (void)updateLabel: (NSString*)labelTitel
 {
     _label.text = labelTitel;
+}
+
+- (void) clearNotification
+{
+    //_localNotif.applicationIconBadgeNumber -= 1;
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 
