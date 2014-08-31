@@ -19,6 +19,8 @@
 		CBC29F3519B375EC00949AA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC29F1D19B375EC00949AA0 /* UIKit.framework */; };
 		CBC29F3D19B375EC00949AA0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBC29F3B19B375EC00949AA0 /* InfoPlist.strings */; };
 		CBC29F3F19B375EC00949AA0 /* LocalNotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC29F3E19B375EC00949AA0 /* LocalNotificationTests.m */; };
+		CBC29F4B19B3761100949AA0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC29F4919B3761100949AA0 /* ViewController.m */; };
+		CBC29F4C19B3761100949AA0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC29F4A19B3761100949AA0 /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		CBC29F3A19B375EC00949AA0 /* LocalNotificationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LocalNotificationTests-Info.plist"; sourceTree = "<group>"; };
 		CBC29F3C19B375EC00949AA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBC29F3E19B375EC00949AA0 /* LocalNotificationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalNotificationTests.m; sourceTree = "<group>"; };
+		CBC29F4819B3761100949AA0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CBC29F4919B3761100949AA0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CBC29F4A19B3761100949AA0 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +112,9 @@
 		CBC29F1F19B375EC00949AA0 /* LocalNotification */ = {
 			isa = PBXGroup;
 			children = (
+				CBC29F4819B3761100949AA0 /* ViewController.h */,
+				CBC29F4919B3761100949AA0 /* ViewController.m */,
+				CBC29F4A19B3761100949AA0 /* ViewController.xib */,
 				CBC29F2819B375EC00949AA0 /* AppDelegate.h */,
 				CBC29F2919B375EC00949AA0 /* AppDelegate.m */,
 				CBC29F2B19B375EC00949AA0 /* Images.xcassets */,
@@ -220,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC29F2419B375EC00949AA0 /* InfoPlist.strings in Resources */,
+				CBC29F4C19B3761100949AA0 /* ViewController.xib in Resources */,
 				CBC29F2C19B375EC00949AA0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC29F4B19B3761100949AA0 /* ViewController.m in Sources */,
 				CBC29F2A19B375EC00949AA0 /* AppDelegate.m in Sources */,
 				CBC29F2619B375EC00949AA0 /* main.m in Sources */,
 			);

@@ -12,12 +12,41 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // launchOptions から UILocalNotifiation 情報を取得
+    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.window.rootViewController = _viewController;
+    
+    
+    if (localNotif) {
+        // 通知イベントで送られてきた情報（文字列）をメイン画面のラベルに表示します。
+        NSString *itemName = [localNotif.userInfo objectForKey:@"EventKey"];
+        [self.viewController updateLabel:itemName];
+        
+        // アイコンに右肩に表示されていた数字をカウントダウンします。
+        // ここでは数字が０になり、アイコンの右肩の赤丸表示がなくなります。
+        application.applicationIconBadgeNumber = localNotif.applicationIconBadgeNumber-1;
+    }
+    
     return YES;
 }
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notif {
+    
+    // 通知イベントで送られてきた情報（文字列）をメイン画面のラベルに表示します。
+    NSString *itemName = [notif.userInfo objectForKey:@"EventKey"];
+    [_viewController updateLabel:itemName];
+    
+    // アイコンに右肩に表示されていた数字をカウントダウンします。
+    // ここでは数字が０になり、アイコンの右肩の赤丸表示がなくなります。
+    application.applicationIconBadgeNumber = notif.applicationIconBadgeNumber-1;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
